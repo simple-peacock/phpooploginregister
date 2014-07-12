@@ -1,5 +1,8 @@
 <?php
 
+// the Config class is an interface to the options set in init.php
+// we can access configuration variables using a path "Config::get('mysql/host')"
+
 class Config {
 	public static function get($path = null) {
 		if($path) {
