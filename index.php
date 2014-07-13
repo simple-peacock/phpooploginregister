@@ -17,6 +17,19 @@ require_once 'core/init.php';
 //	}
 //}
 
-DB::getInstance();
+//$user = DB::getInstance()->query("SELECT * FROM users");
+
+$user = DB::getInstance()->get('users', array('username', '=', 'alex'));
+
+if(!$user->count()) {
+	echo "No user";
+} else {
+	
+	echo $user->first()->username;
+
+	//foreach($user->results() as $user) {
+	//	echo $user->username . "<br>";
+	//}
+}
 
 
