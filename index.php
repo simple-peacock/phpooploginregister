@@ -19,7 +19,21 @@ require_once 'core/init.php';
 
 //$user = DB::getInstance()->query("SELECT * FROM users");
 
-$user = DB::getInstance()->get('users', array('username', '=', 'alex'));
+//$user = DB::getInstance()->get('users', array('username', '=', 'alex'));
+
+// inserting in DB
+// $user = DB::getInstance()->insert('users', array(
+// 	'username' => 'Dale',
+// 	'password' => 'password',
+// 	'salt' => 'salt'
+// ));
+
+
+// updating DB
+$user = DB::getInstance()->update('users', 3, array(
+	'password' => 'newpassword',
+	'name' => 'Dale Barrett'
+));
 
 if(!$user->count()) {
 	echo "No user";
