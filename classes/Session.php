@@ -19,4 +19,15 @@ class Session {
 		}
 	}
 
+	public static function flash($name, $string = "") {
+		if(self::exists($name)) {
+			$session = self::get($name);
+			self::delete($name); // so that message isn't shown next time
+			return $session;
+		} else {
+			self::put($name, $string);
+		}
+		// return '';
+	} 
+
 }

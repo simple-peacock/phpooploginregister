@@ -1,9 +1,10 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once 'core/init.php';
+
+if(Session::exists('success')) {
+	echo Session::flash('success');
+}
 
 // an example of using the Config class
 //echo Config::get('mysql/host'); // 127.0.0.1
@@ -30,20 +31,20 @@ require_once 'core/init.php';
 
 
 // updating DB
-$user = DB::getInstance()->update('users', 3, array(
-	'password' => 'newpassword',
-	'name' => 'Dale Barrett'
-));
+// $user = DB::getInstance()->update('users', 3, array(
+// 	'password' => 'newpassword',
+// 	'name' => 'Dale Barrett'
+// ));
 
-if(!$user->count()) {
-	echo "No user";
-} else {
+// if(!$user->count()) {
+// 	echo "No user";
+// } else {
 	
-	echo $user->first()->username;
+// 	echo $user->first()->username;
 
-	//foreach($user->results() as $user) {
-	//	echo $user->username . "<br>";
-	//}
-}
+// 	//foreach($user->results() as $user) {
+// 	//	echo $user->username . "<br>";
+// 	//}
+// }
 
 
