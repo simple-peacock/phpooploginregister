@@ -6,6 +6,8 @@ if(Session::exists('home')) {
 	echo '<p>' . Session::flash('home') . '</p>';
 }
 
+echo Session::get(Config::get('session/session_name'));
+
 // an example of using the Config class
 //echo Config::get('mysql/host'); // 127.0.0.1
 
