@@ -6,7 +6,21 @@ if(Session::exists('home')) {
 	echo '<p>' . Session::flash('home') . '</p>';
 }
 
-echo Session::get(Config::get('session/session_name'));
+// echo Session::get(Config::get('session/session_name'));
+
+$user = new User();
+if($user->isLoggedIn()) {
+?> 
+	<p>Hello <a href="#"><?php echo htmlspecialchars($user->data()->username); ?></a>!</p>
+
+	<ul>
+		<li><a href="logout.php">Log out</a></li>
+	</ul>
+
+<?php	
+} else {
+	echo '<p>You need to <a href="login.php">login</a> or <a href="register.php">register</a></p>';
+}
 
 // an example of using the Config class
 //echo Config::get('mysql/host'); // 127.0.0.1
