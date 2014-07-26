@@ -97,7 +97,7 @@ class DB {
 			$x++;
 		}
 
-		$sql = "INSERT INTO users (`" . implode('`, `', $keys) .  "`) VALUES ({$values})"; // INSERT INTO users (`username`, `password`, `salt`) VALUES (?, ?, ?)
+		$sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) .  "`) VALUES ({$values})"; // INSERT INTO users (`username`, `password`, `salt`) VALUES (?, ?, ?)
 
 		// perform the query
 		if(!$this->query($sql, $fields)->error()) {
