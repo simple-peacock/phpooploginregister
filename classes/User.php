@@ -27,6 +27,18 @@ class User {
 		}
 	}
 
+	public function update($fields = array(), $id = null) {
+
+		if(!$id && $this->isLoggedIn()) {
+			// update current user if no user id passed in
+			$id = $this->data()->id;
+		}
+
+		if(!$this->_db->update('users', $id, $fields)) {
+			throw new Exception('There was a problem updating.');
+		}
+	}
+
 	public function create($fields = array()) {
 		if(!$this->_db->insert('users', $fields)) {
 			throw new Exception('There was a problem creating an account.');
